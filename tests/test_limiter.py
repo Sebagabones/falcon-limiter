@@ -12,7 +12,7 @@ def test_default_limit(limiter):
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         def some_other_method(self):
             pass
@@ -39,11 +39,11 @@ def test_no_limit(limiter):
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     class ThingsResourceNoLimit:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -72,7 +72,7 @@ def test_limit_on_method(limiter):
     class ThingsResource:
         @limiter.limit()
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -97,7 +97,7 @@ def test_limit_on_method_overwrite(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits="2 per second")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -125,7 +125,7 @@ def test_limit_on_method_overwrite_multiple(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits="5 per hour;2 per second")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -153,7 +153,7 @@ def test_limit_on_method_overwrite_multiple_short_notation(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits="5 per hour;2/second")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -180,7 +180,7 @@ def test_limit_as_iterable(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits=["5 per hour", "2 per second"])
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -207,7 +207,7 @@ def test_limit_w_commas(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits="5 per hour,2 per second")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -234,7 +234,7 @@ def test_limit_w_semicol(limiter):
         # the default limit on 'limiter' is 1 per second
         @limiter.limit(limits="5 per hour;2 per second")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -261,7 +261,7 @@ def test_limit_class(limiter):
     @limiter.limit(limits="5 per hour;2 per second")
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -290,7 +290,7 @@ def test_limit_class_and_method(limiter):
         # also the limits are in an unusual order:
         @limiter.limit(limits="3 per second;5 per hour")
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -326,7 +326,7 @@ def test_empy_limits():
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -345,7 +345,7 @@ def test_undefined_endpoint(limiter):
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())

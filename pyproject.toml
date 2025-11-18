@@ -1,6 +1,36 @@
+[project]
+name = ""
+version = "0.0.1"
+requires-python = ">3.8"
+dependencies = [
+    "falcon",
+    "limits",
+    "tox>=4.25.0",
+]
+
 [build-system]
 requires = ["flit_core >=2,<3"]
 build-backend = "flit_core.buildapi"
+
+[dependency-groups]
+dev = [
+    "autodoc",
+    "bump2version",
+    "coredis",
+    "flit",
+    "importlib-metadata",
+    "pylibmc",
+    "pytest",
+    "pytest-cov",
+    "pytest-pep8",
+    "pytest-xdist",
+    "pytest-xprocess",
+    "redis",
+    "mypy",
+    "sphinx",
+    "tox",
+    "tox-pipenv-install",
+]
 
 [tool.flit.metadata]
 module = "falcon_limiter"
@@ -36,6 +66,13 @@ requires = [
 ]
 description-file = "README.md"
 requires-python = ">=3.6"
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
 
 [tool.flit.metadata.urls]
 Documentation = "https://falcon-limiter.readthedocs.io/en/latest/"

@@ -11,7 +11,7 @@ def test_get_remote_addr(limiter):
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
             assert '127.0.0.1' == get_remote_addr(req, resp, None, None)
 
     app = API(middleware=limiter.middleware)

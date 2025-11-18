@@ -34,16 +34,16 @@ def test_multiple_decorators_on_method(asynclimiter):
         @asynclimiter.limit()
         @async_decorator
         async def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         @async_decorator
         @asynclimiter.limit()
         async def on_post(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         @register(async_decorator, asynclimiter.limit())
         async def on_put(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = asgi.App(middleware=asynclimiter.middleware)
     app.add_route('/things', ThingsResource())
@@ -102,7 +102,7 @@ def test_multiple_decorators_on_class(asynclimiter):
     @register(sync_decorator, asynclimiter.limit())
     class ThingsResource:
         async def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = asgi.App(middleware=asynclimiter.middleware)
     app.add_route('/things', ThingsResource())

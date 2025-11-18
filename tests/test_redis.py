@@ -25,7 +25,7 @@ def test_redis(redis_server):
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app = API(middleware=limiter.middleware)
     app.add_route('/things', ThingsResource())

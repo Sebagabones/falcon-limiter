@@ -37,7 +37,7 @@ limiter = Limiter(
 @limiter.limit()
 class ThingsResource:
     def on_get(self, req, resp):
-        resp.body = 'Hello world!'
+        resp.text = 'Hello world!'
 
 # add the limiter middleware to the Falcon app
 app = falcon.API(middleware=limiter.middleware)
@@ -63,7 +63,7 @@ limiter = AsyncLimiter(
 @limiter.limit()
 class ThingsResource:
     async def on_get(self, req, resp):
-        resp.body = 'Hello world!'
+        resp.text = 'Hello world!'
 
 # add the limiter middleware to the Falcon app
 app = falcon.asgi.App(middleware=limiter.middleware)
@@ -107,7 +107,7 @@ limiter = Limiter(
 class ThingsResource:
     # no rate limit on this method
     def on_get(self, req, resp):
-        resp.body = 'Hello world!'
+        resp.text = 'Hello world!'
 
     # a more strict rate limit applied to this method
     # with a custom key function serving up the user_id
@@ -115,7 +115,7 @@ class ThingsResource:
     @limiter.limit(limits="3 per minute,1 per second",
         key_func=lambda req, resp, resource, params: req.context.user_id)
     def on_post(self, req, resp):
-        resp.body = 'Hello world!'
+        resp.text = 'Hello world!'
 
 class SpecialResource:
     # dynamic_limits allowing the 'admin' user a higher limit than others
@@ -123,7 +123,7 @@ class SpecialResource:
         '999/minute,9999/second' if req.context.user == 'admin'
         else '5 per minute,2/second')
     def on_get(self, req, resp):
-        resp.body = 'Hello world!'
+        resp.text = 'Hello world!'
 
 # add the limiter middleware to the Falcon app
 app = falcon.API(middleware=limiter.middleware)

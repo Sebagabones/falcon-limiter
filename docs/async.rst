@@ -47,7 +47,7 @@ A few examples to demonstrate the use of the async module.
     @limiter.limit()
     class ThingsResource:
         async def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     # add the limiter middleware to the Falcon app
     app = falcon.asgi.App(middleware=limiter.middleware)
@@ -87,7 +87,7 @@ A few examples to demonstrate the use of the async module.
         @limiter.limit(limits="2 per hour;1 per minute",
                        deduct_when=deduct_when_func)
         async def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     # add the limiter middleware to the Falcon app
     app = falcon.asgi.App(middleware=limiter.middleware)

@@ -58,19 +58,19 @@ be used as a decorator to decorate a whole class or individual methods:
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     # use the default limit for all methods of this class
     @limiter.limit()
     class ThingsResource2:
         # this will use the default limit from the class
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         # this will use a custom limit overwriting the one set at class level
         @limiter.limit(limits="3 per minute,1 per second")
         def on_post(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 ..
 
 You can provide a config dictionary to the ``Limiter``, see `Configuring Falcon-Limiter`_:
@@ -109,7 +109,7 @@ calling ``falcon.API()``:
     @limiter.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     # add the limiter middleware to the Falcon app
     app = falcon.API(middleware=limiter.middleware)

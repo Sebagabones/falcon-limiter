@@ -21,7 +21,7 @@ def test_different_key_prefixes():
     @limiter1.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app1 = API(middleware=limiter1.middleware)
     app1.add_route('/things', ThingsResource())
@@ -49,7 +49,7 @@ def test_different_key_prefixes():
     @limiter2.limit()
     class ThingsResource:
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
     app2 = API(middleware=limiter2.middleware)
     app2.add_route('/things', ThingsResource())

@@ -82,7 +82,7 @@ def app(request, limiter):
     class ThingsResource:
         # unmarked methods will use the default limit
         def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         # mark this method with a special limit
         # which will overwrite the default
@@ -117,7 +117,7 @@ def asyncapp(request, asynclimiter):
     class ThingsResource:
         # unmarked methods will use the default limit
         async def on_get(self, req, resp):
-            resp.body = 'Hello world!'
+            resp.text = 'Hello world!'
 
         # mark this method with a special limit
         # which will overwrite the default
