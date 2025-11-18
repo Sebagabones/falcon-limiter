@@ -42,7 +42,6 @@ Documentation = "https://falcon-limiter.readthedocs.io/en/latest/"
 [project.optional-dependencies]
 test = [
     "coredis",
-    "flit",
     "pylibmc",
     "pytest>=4.0.0",
     "pytest-cov",
