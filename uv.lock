@@ -669,8 +669,6 @@ dependencies = [
     { name = "falcon" },
     { name = "limits", version = "4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "limits", version = "5.6.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
-    { name = "tox", version = "4.27.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
-    { name = "tox", version = "4.32.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
 ]
 
 [package.optional-dependencies]
@@ -727,7 +725,6 @@ requires-dist = [
     { name = "pytest-xdist", marker = "extra == 'test'" },
     { name = "pytest-xprocess", marker = "extra == 'test'" },
     { name = "redis", marker = "extra == 'test'" },
-    { name = "tox", specifier = ">=4.25.0" },
     { name = "tox", marker = "extra == 'test'" },
     { name = "tox-pipenv-install", marker = "extra == 'test'" },
 ]

@@ -10,7 +10,6 @@ authors = [
 dependencies = [
   "falcon>=1.0.0",
   "limits",
-  "tox>=4.25.0"
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -83,6 +82,3 @@ build-backend = "hatchling.build"
 [tool.uv]
 package = false
 
-[[tool.uv.index]]
-name = "pypi"
-url = "https://pypi.org/simple"
