@@ -1,3 +1,8 @@
+#### **NOTE:**
+I did not write this code, all of the credit for the orginal code goes to the orginal authors (please see the repoistory this is forked from).
+
+What I did do was update the project to newer versions of python/falcon, and switch to hatchling for the build system, so that I could easily build this package for my own project with nix :)
+
 [![example workflow](https://github.com/zoltan-fedor/falcon-limiter/actions/workflows/test.yaml/badge.svg)](https://github.com/zoltan-fedor/falcon-limiter/actions?query=workflow%3A%22Run+tests%22)
 [![codecov](https://codecov.io/gh/zoltan-fedor/falcon-limiter/branch/main/graph/badge.svg)](https://codecov.io/gh/zoltan-fedor/falcon-limiter)
 [![Documentation Status](https://readthedocs.org/projects/falcon-limiter/badge/?version=latest)](https://falcon-limiter.readthedocs.io/en/latest/?badge=latest)
